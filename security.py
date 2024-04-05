@@ -17,9 +17,9 @@ COOKIE_NAME="Authorization"
 def create_access_token(user):
     try:
         payload={
-            "email":user.email, 
-            "username":user.username,
-            "is_active":False
+            "email":user['email'], 
+            "username":user['username'],
+            "is_active":user['is_active']
         }
         return  jwt.encode(payload,key=JWT_SECRET,algorithm=ALGORITHM)
     except Exception as ex:

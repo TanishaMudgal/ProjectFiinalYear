@@ -13,7 +13,8 @@ class UserRepository:
 
     def create_user(self,signup:UserModel):
          try:
-             collection_name.insert_one(dict(signup))
+             self.is_active=False
+             collection_name.insert_one(dict(signup), )
              #self.sess.commit()
              print("created")
          except:
@@ -27,6 +28,7 @@ class UserRepository:
         return collection_name.find_one({"email": email})
     
     def get_user_by_username(self,username:str):
+        print(collection_name.find_one({"username": username}))
         return collection_name.find_one({"username": username})
     
     
